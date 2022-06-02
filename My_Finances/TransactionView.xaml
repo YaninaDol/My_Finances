@@ -1,0 +1,39 @@
+﻿<Window x:Class="My_Finances.TransactionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:My_Finances" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Транзакция" Height="450" Width="350">
+    <Grid>
+        <StackPanel Background="Black" >
+            <RadioButton IsChecked="{Binding Debit, UpdateSourceTrigger=PropertyChanged}"   FontFamily="Roboto Black" Foreground="White" FontWeight="Bold"  FontSize="20" Name="OnDate" Grid.Column="0" Margin="51,26,186,25" Grid.Row="0"  Command="{Binding SortDateCommand}" Content=" Доход" />
+            <RadioButton IsChecked="True" Foreground="White"  FontWeight="Bold" FontSize="20" Name="OnTitle" Grid.Column="0"  Grid.Row="0"  Command="{Binding SortTitleCommand}" Content=" Расход" Margin="195,-57,47,23" />
+        </StackPanel>
+        <StackPanel Background="White" Margin="0,79,0,0">
+            <Label Background="Orange" FontSize="20" HorizontalContentAlignment="Center"   Content="Дата"></Label>
+
+            <TextBox FontSize="15" FontWeight="DemiBold" Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Background="Orange" FontSize="20" HorizontalContentAlignment="Center"  Content="Сумма"></Label>
+            <TextBox FontSize="15" FontWeight="DemiBold" Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Background="Orange" FontSize="20" HorizontalContentAlignment="Center"   Content="Назначение"></Label>
+            <TextBox FontSize="20" FontStyle="Italic" Text="{Binding UseFor, UpdateSourceTrigger=PropertyChanged}" Height="90"/>
+        </StackPanel>
+        <StackPanel Background="Black" Margin="0,323,0,0">
+         
+
+
+            <Button
+    Style="{StaticResource MaterialDesignOutlinedButton}"
+    materialDesign:ButtonProgressAssist.Value="-1"
+    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+    materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+    Content="Сохранить"
+    Margin="71,34,71,0"
+    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="Button_Click_2" />
+
+        </StackPanel>
+        
+    </Grid>
+</Window>
